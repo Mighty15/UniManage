@@ -18,6 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('reports.urls')),  # Ahora será en http://127.0.0.1:8000/
+    path("admin/", admin.site.urls),
+    path("accounts/", include("accounts.urls")), # Include accounts app URLs
+    path("", include("reports.urls")),         # Dashboard principal
+    path("activos/", include("assets.urls")),  # CRUD de activos
+    path("prestamos/", include("loans.urls")), # Gestión de préstamos
+    path("mantenimientos/", include("maintenance.urls")), # Gestión de mantenimientos
+    path("reportes/", include("reports.urls")), # Reportes
 ]

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Activos{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 text-white px-6 py-3">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'dashboard' %}" class="text-lg font-bold flex items-center">
+                <i class="fas fa-chart-line mr-2"></i> Sistema de Gestión de Activos
+            </a>
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'dashboard' %}" class="hover:text-gray-300"><i class="fas fa-home mr-1"></i>Inicio</a></li>
+                <li><a href="{% url 'asset_list' %}" class="hover:text-gray-300"><i class="fas fa-list mr-1"></i>Activos</a></li>
+                <li><a href="#" class="hover:text-gray-300"><i class="fas fa-exchange-alt mr-1"></i>Préstamos</a></li>
+                <li><a href="#" class="hover:text-gray-300"><i class="fas fa-tools mr-1"></i>Mantenimientos</a></li>
+                <li><a href="#" class="hover:text-gray-300"><i class="fas fa-chart-pie mr-1"></i>Reportes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido dinámico -->
+    <main class="container mx-auto px-6 py-8">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4 mt-10">
+        <p>Sistema de Gestión de Activos © 2025</p>
+    </footer>
+
+</body>
+</html>

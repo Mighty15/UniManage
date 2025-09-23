@@ -1,33 +1,80 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required # Import login_required
 from .models import AssetCategory, Asset
+from .forms import AssetForm
 
-def dashboard(request):
-    categories = AssetCategory.objects.all()
-    data = []
+# ✅ Lista de activos
+@login_required # Protect this view
+def asset_list(request):
+    categories = AssetCategory.objects.all() # Get all categories for the filter dropdown
+    all_assets = Asset.objects.select_related("category").all() # Start with all assets
 
-    for category in categories:
-        total = Asset.objects.filter(category=category).count()
-        disponibles = Asset.objects.filter(category=category, status="Disponible").count()
-        en_uso = Asset.objects.filter(category=category, status="En uso").count()
-        mantenimiento = Asset.objects.filter(category=category, status="En mantenimiento").count()
+    # Get filter parameters from GET request
+    name_query = request.GET.get('name', '')
+    selected_category_id = request.GET.get('category', '')
+    location_query = request.GET.get('location', '')
+    status_query = request.GET.get('status', '')
 
-        # evitar división por cero
-        if total > 0:
-            disponibles_pct = (disponibles / total) * 100
-            en_uso_pct = (en_uso / total) * 100
-            mantenimiento_pct = (mantenimiento / total) * 100
-        else:
-            disponibles_pct = en_uso_pct = mantenimiento_pct = 0
+    # Apply filters
+    if name_query:
+        all_assets = all_assets.filter(name__icontains=name_query)
+    if selected_category_id:
+        all_assets = all_assets.filter(category__id=selected_category_id)
+    if location_query:
+        all_assets = all_assets.filter(location__icontains=location_query)
+    if status_query:
+        all_assets = all_assets.filter(status=status_query)
 
-        data.append({
-            "categoria": category.name,
-            "total": total,
-            "disponibles": disponibles,
-            "en_uso": en_uso,
-            "mantenimiento": mantenimiento,
-            "disponibles_pct": disponibles_pct,
-            "en_uso_pct": en_uso_pct,
-            "mantenimiento_pct": mantenimiento_pct,
-        })
+    activos = all_assets # The filtered queryset
 
-    return render(request, "dashboard.html", {"data": data})
+    # Calculate metrics for the cards based on the filtered queryset
+    total_assets = activos.count()
+    available_assets = activos.filter(status="Disponible").count()
+    in_use_assets = activos.filter(status="En uso").count()
+    maintenance_assets = activos.filter(status="En mantenimiento").count()
+
+    context = {
+        "activos": activos,
+        "categories": categories, # For category filter dropdown
+        "asset_statuses": Asset._meta.get_field('status').choices, # Pass status choices to template
+        "name_query": name_query,
+        "selected_category_id": selected_category_id,
+        "location_query": location_query,
+        "status_query": status_query,
+        "total_assets": total_assets,
+        "available_assets": available_assets,
+        "in_use_assets": in_use_assets,
+        "maintenance_assets": maintenance_assets,
+    }
+    return render(request, "assets/asset_list.html", context)
+
+@login_required # Protect this view
+def asset_create(request):
+    if request.method == "POST":
+        form = AssetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("asset_list")
+    else:
+        form = AssetForm()
+    return render(request, "assets/asset_form.html", {"form": form, "title": "Crear Activo"})
+
+@login_required # Protect this view
+def asset_edit(request, pk):
+    asset = get_object_or_404(Asset, pk=pk)
+    if request.method == "POST":
+        form = AssetForm(request.POST, instance=asset)
+        if form.is_valid():
+            form.save()
+            return redirect("asset_list")
+    else:
+        form = AssetForm(instance=asset)
+    return render(request, "assets/asset_form.html", {"form": form, "title": "Editar Activo"})
+
+@login_required # Protect this view
+def asset_delete(request, pk):
+    asset = get_object_or_404(Asset, pk=pk)
+    if request.method == "POST":
+        asset.delete()
+        return redirect("asset_list")
+    return render(request, "assets/asset_confirm_delete.html", {"asset": asset})
