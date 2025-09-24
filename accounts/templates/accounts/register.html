@@ -11,10 +11,10 @@
         {% csrf_token %}
         {% for field in form %}
             <div class="mb-4">
-                <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ field.label }}</label>
-                {{ field|add_class:"mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" }}
+                <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ field.label }}</label>
+                {{ field|add_class:"mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-primary dark:focus:ring-primary-400 focus:border-primary dark:focus:border-primary-400 sm:text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white" }}
                 {% if field.help_text %}
-                    <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ field.help_text }}</p>
                 {% endif %}
                 {% for error in field.errors %}
                     <p class="mt-1 text-sm text-red-600">{{ error }}</p>

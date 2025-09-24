@@ -9,8 +9,12 @@
 
   <form method="post" class="mt-4">
     {% csrf_token %}
-    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">Sí, eliminar</button>
-    <a href="{% url 'maintenance_list' %}" class="ml-2 text-gray-600">Cancelar</a>
+    <button type="submit" class="bg-red-600 dark:bg-red-700 text-white px-4 py-2 rounded">Sí, eliminar</button>
+    <a href="{% url 'maintenance_list' %}" class="ml-2 text-gray-600 dark:text-gray-400">Cancelar</a>
+  </form>
+</div>
+{% endblock %}
+-600">Cancelar</a>
   </form>
 </div>
 {% endblock %}
