@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required # Import login_required
 from .models import AssetCategory, Asset
 from .forms import AssetForm
+from django.db.models import Q
+
 
 # ✅ Lista de activos
 @login_required # Protect this view

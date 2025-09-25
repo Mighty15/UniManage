@@ -1,0 +1,17 @@
+# Resumen de Cambios en el Proyecto UniManage
+
+A continuación se detallan todas las modificaciones y nuevas funcionalidades implementadas en el proyecto.
+
+## 1. Correcciones Iniciales y Mejoras de Seguridad
+
+- **`requirements.txt`**: 
+  - Se detectó que el archivo estaba vacío y se generó una lista de dependencias del proyecto.
+  - Se añadieron manualmente las dependencias faltantes: `Django` y `mysqlclient`.
+
+- **Seguridad de Credenciales**:
+  - Se eliminaron las credenciales de la base de datos hardcodeadas en `unimanage/settings.py`.
+  - Se añadió la librería `python-dotenv` para gestionar variables de entorno.
+  - Se creó un archivo `.env` en la raíz del proyecto para almacenar las credenciales de forma segura.
+  - Se añadió `.env` al `.gitignore` para evitar que se suba al control de versiones.
+  - Se modificó `unimanage/settings.py` para leer la configuración de la base de datos desde el archivo `.env`.
+
