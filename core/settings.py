@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.accounts', # Add the new accounts app
     'apps.chatbot',
     'apps.usermanagement',
+    'core',
 ]
 
 MIDDLEWARE = [

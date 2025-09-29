@@ -8,13 +8,10 @@
 
 {% block content %}
 <div class="max-w-7xl mx-auto">
-    <!-- Header -->
-    <div class="bg-gradient-to-r from-primary to-secondary text-white py-8 rounded-b-2xl shadow-lg mb-8">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl font-bold mb-2">Panel de Reportes de Activos</h1>
-            <p class="text-xl opacity-90">Resumen completo del estado de los activos y categorías</p>
-        </div>
-    </div>
+    <header class="mb-8">
+        <h1 class="text-4xl font-bold text-primary tracking-tight">Panel de Reportes de Activos</h1>
+        <p class="text-secondary mt-1">Resumen completo del estado de los activos y categorías.</p>
+    </header>
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 mb-16">
@@ -74,7 +71,7 @@
                         <div class="w-full bg-gray-300 rounded-full h-4 mt-3 flex">
                             <div class="bg-primary h-4 rounded-l-full" style="width: {{ item.disponibles_pct }}%"></div>
                             <div class="bg-status_blue h-4" style="width: {{ item.en_uso_pct }}%"></div>
-                            <div class="bg-status_yellow h-4 rounded-r-full" style="width: {{ item.remaining_pct_for_bar }}%"></div>
+                            <div class="bg-status_yellow h-4 rounded-r-full" style="width: {{ item.mantenimiento_pct }}%"></div>
                         </div>
                         <div class="mt-3 text-sm">
                             <span class="text-primary font-semibold">{{ item.disponibles }} disponibles</span> |

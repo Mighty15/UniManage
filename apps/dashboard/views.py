@@ -43,7 +43,7 @@ def dashboard(request):
             mantenimiento_pct = round((mantenimiento / total) * 100, 2)
             # Se calcula un porcentaje restante para asegurar que la barra de progreso sume 100%,
             # compensando posibles errores de redondeo.
-            remaining_pct_for_bar = round(100 - (disponibles_pct + en_uso_pct), 2)
+            remaining_pct_for_bar = round(100 - (disponibles_pct + en_uso_pct + mantenimiento_pct), 2)
             if remaining_pct_for_bar < 0:
                 remaining_pct_for_bar = 0
         else:
@@ -73,8 +73,9 @@ def dashboard(request):
     asset_status_data = [available_assets, in_use_assets, maintenance_assets]
 
     # --- 5. Contexto para la Plantilla ---
+    print("DEBUG: data_by_category:", data_by_category)
     context = {
-        "data": data_by_category,
+        "data_by_category": data_by_category,
         "total_assets": total_assets,
         "available_assets": available_assets,
         "in_use_assets": in_use_assets,

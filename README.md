@@ -22,9 +22,9 @@ Además, cuenta con un **asistente virtual (chatbot)** que permite a los usuario
     -   HTML5
     -   Tailwind CSS
     -   JavaScript
-    -   Chart.js (para gráficos en el dashboard)
-    -   Font Awesome (para iconografía)
-    -   jQuery & DataTables (para tablas interactivas)
+    -   Chart.js
+    -   Font Awesome 
+    -   jQuery & DataTables 
 -   **Base de Datos**:
     -   MySQL
 
