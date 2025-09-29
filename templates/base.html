@@ -59,8 +59,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'dashboard' %}" class="flex items-center space-x-3 p-3 rounded-lg text-white hover:bg-secondary hover:border-l-4 hover:border-white transition-all duration-200">
+                    <a href="{% url 'report_list' %}" class="flex items-center space-x-3 p-3 rounded-lg text-white hover:bg-secondary hover:border-l-4 hover:border-white transition-all duration-200">
                         <i class="fas fa-chart-pie"></i><span>Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user_list' %}" class="flex items-center space-x-3 p-3 rounded-lg text-white hover:bg-secondary hover:border-l-4 hover:border-white transition-all duration-200">
+                        <i class="fas fa-users-cog"></i><span>Usuarios</span>
                     </a>
                 </li>
             </ul>
@@ -97,5 +102,32 @@
     </div>
 
     {% block extra_scripts %}{% endblock %}
+
+    <!-- Chatbot HTML -->
+    <div id="chatbot-container">
+        <div id="chatbot-bubble">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div id="chatbot-window" class="hidden">
+            <div id="chatbot-header">
+                <span>Asistente Virtual</span>
+                <button id="chatbot-close-btn">&times;</button>
+            </div>
+            <div id="chatbot-messages">
+                <div class="chatbot-message bot">¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte?</div>
+            </div>
+            <div id="chatbot-input-container">
+                <form id="chatbot-form">
+                    <input type="text" id="chatbot-input" placeholder="Escribe un mensaje..." autocomplete="off">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Chatbot HTML -->
+
+    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+    <script src="{% static 'js/chatbot.js' %}"></script>
+
 </body>
 </html>

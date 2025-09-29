@@ -1,0 +1,779 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$57lzASjNEAIT6QeEbTXUhW$2SAMs6WUWxfg356qS4tQuLYkPoyeQQHgNJthtEkuM60=",
+    "last_login": "2025-09-26T16:12:20.067Z",
+    "is_superuser": true,
+    "username": "Eric",
+    "first_name": "",
+    "last_name": "",
+    "email": "eric201708@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-11T20:41:56.112Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$tdDh3ck5sUbbjvBW6oMw4n$mRlnq0ZTsRFLZTawAREJI0FEdcC89qbRetrtgITBWSg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Pedro",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-12T15:15:36.133Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$4WUDUZ9crOzx6WUQCPqq4k$vpKxypCin/i3QdLEAvcGTaW2TddUfSgb63PPbisFGkg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Juan",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-12T15:21:11.152Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$HGZRGiLyWxxtDlVk9LHF3c$prwTTO0aV3mgPMQ//c2B0m4doo1qerdPhVSHoCZYSo0=",
+    "last_login": "2025-09-22T16:53:03.286Z",
+    "is_superuser": false,
+    "username": "Eric1",
+    "first_name": "",
+    "last_name": "",
+    "email": "eric201708@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-22T16:52:42.242Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$5BTs9pGyBN2wnm3KetePtX$bx/kjkZ0n6DBrn4h+j0SpRTuqSRHvsFVgVYxTbueeHs=",
+    "last_login": "2025-09-26T16:16:28.012Z",
+    "is_superuser": false,
+    "username": "Juan3",
+    "first_name": "",
+    "last_name": "",
+    "email": "Juan@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-26T16:16:24.080Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "assets.assetcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Computadores"
+  }
+},
+{
+  "model": "assets.assetcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Proyectores"
+  }
+},
+{
+  "model": "assets.assetcategory",
+  "pk": 3,
+  "fields": {
+    "name": "Impresoras"
+  }
+},
+{
+  "model": "assets.assetcategory",
+  "pk": 4,
+  "fields": {
+    "name": "Redes"
+  }
+},
+{
+  "model": "assets.assetcategory",
+  "pk": 5,
+  "fields": {
+    "name": "Otros"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 1,
+  "fields": {
+    "name": "Laptop HP",
+    "category": 1,
+    "location": "Biblioteca",
+    "status": "Disponible",
+    "created_at": "2025-09-12T10:06:56Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 2,
+  "fields": {
+    "name": "Proyector Epson",
+    "category": 2,
+    "location": "Sala 101",
+    "status": "En uso",
+    "created_at": "2025-09-12T10:06:56Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 3,
+  "fields": {
+    "name": "Impresora Canon",
+    "category": 3,
+    "location": "Oficina 203",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-12T10:06:56Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 4,
+  "fields": {
+    "name": "Switch Cisco",
+    "category": 4,
+    "location": "Data Center",
+    "status": "Disponible",
+    "created_at": "2025-09-12T10:06:56Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 106,
+  "fields": {
+    "name": "Laptop HP 2",
+    "category": 1,
+    "location": "Biblioteca",
+    "status": "En uso",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 107,
+  "fields": {
+    "name": "Laptop Dell 1",
+    "category": 1,
+    "location": "Laboratorio 1",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 109,
+  "fields": {
+    "name": "PC Lenovo 1",
+    "category": 1,
+    "location": "Oficina 101",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 110,
+  "fields": {
+    "name": "PC Lenovo 2",
+    "category": 1,
+    "location": "Oficina 102",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 111,
+  "fields": {
+    "name": "Proyector Epson 1",
+    "category": 2,
+    "location": "Sala 201",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 112,
+  "fields": {
+    "name": "Proyector Epson 2",
+    "category": 2,
+    "location": "Sala 202",
+    "status": "En uso",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 113,
+  "fields": {
+    "name": "Proyector Sony 1",
+    "category": 2,
+    "location": "Sala 203",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 114,
+  "fields": {
+    "name": "Proyector Sony 2",
+    "category": 2,
+    "location": "Sala 204",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 115,
+  "fields": {
+    "name": "Impresora Canon 1",
+    "category": 3,
+    "location": "Oficina 301",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 116,
+  "fields": {
+    "name": "Impresora Canon 2",
+    "category": 3,
+    "location": "Oficina 302",
+    "status": "En uso",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 117,
+  "fields": {
+    "name": "Impresora HP 1",
+    "category": 3,
+    "location": "Oficina 303",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 118,
+  "fields": {
+    "name": "Impresora HP 2",
+    "category": 3,
+    "location": "Oficina 304",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 119,
+  "fields": {
+    "name": "Router Cisco 1",
+    "category": 4,
+    "location": "Redes 1",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 120,
+  "fields": {
+    "name": "Router Cisco 2",
+    "category": 4,
+    "location": "Redes 2",
+    "status": "En uso",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 121,
+  "fields": {
+    "name": "Switch TP-Link 1",
+    "category": 4,
+    "location": "Redes 3",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 122,
+  "fields": {
+    "name": "Switch TP-Link 2",
+    "category": 4,
+    "location": "Redes 4",
+    "status": "En uso",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 123,
+  "fields": {
+    "name": "Pantalla Samsung 1",
+    "category": 5,
+    "location": "Sala Juntas 1",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 124,
+  "fields": {
+    "name": "Pantalla Samsung 2",
+    "category": 5,
+    "location": "Sala Juntas 2",
+    "status": "En uso",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 125,
+  "fields": {
+    "name": "Tablet iPad 1",
+    "category": 5,
+    "location": "Biblioteca",
+    "status": "Disponible",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 126,
+  "fields": {
+    "name": "Tablet iPad 2",
+    "category": 5,
+    "location": "Biblioteca",
+    "status": "En uso",
+    "created_at": "2025-09-12T11:20:28Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 127,
+  "fields": {
+    "name": "Laptop HP EliteBook",
+    "category": 1,
+    "location": "Biblioteca",
+    "status": "Disponible",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 128,
+  "fields": {
+    "name": "Laptop Dell Inspiron",
+    "category": 1,
+    "location": "Laboratorio 1",
+    "status": "En uso",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 129,
+  "fields": {
+    "name": "PC Lenovo ThinkCentre",
+    "category": 1,
+    "location": "Oficina 101",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 130,
+  "fields": {
+    "name": "Proyector Epson X200",
+    "category": 2,
+    "location": "Sala 201",
+    "status": "Disponible",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 131,
+  "fields": {
+    "name": "Proyector BenQ MX560",
+    "category": 2,
+    "location": "Auditorio",
+    "status": "En uso",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 132,
+  "fields": {
+    "name": "Impresora Canon LBP2900",
+    "category": 3,
+    "location": "Oficina 301",
+    "status": "Disponible",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 134,
+  "fields": {
+    "name": "Router Cisco RV340",
+    "category": 4,
+    "location": "Redes 1",
+    "status": "Disponible",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 135,
+  "fields": {
+    "name": "Switch TP-Link TL-SG108",
+    "category": 4,
+    "location": "Redes 2",
+    "status": "En uso",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 136,
+  "fields": {
+    "name": "Firewall Fortinet FG-60E",
+    "category": 4,
+    "location": "Redes 3",
+    "status": "Disponible",
+    "created_at": "2025-09-12T16:08:24Z",
+    "updated_at": "2025-09-12T21:11:32.466Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 137,
+  "fields": {
+    "name": "Thinkpad v16",
+    "category": 1,
+    "location": "Audacia",
+    "status": "Disponible",
+    "created_at": "2025-09-15T16:18:30.505Z",
+    "updated_at": "2025-09-15T16:18:30.505Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 138,
+  "fields": {
+    "name": "Laptop HP 2",
+    "category": 1,
+    "location": "Biblioteca",
+    "status": "En uso",
+    "created_at": "2025-09-15T19:29:11.038Z",
+    "updated_at": "2025-09-15T19:29:11.038Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 139,
+  "fields": {
+    "name": "PC 1",
+    "category": 1,
+    "location": "Biblioteca",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-15T19:34:42.062Z",
+    "updated_at": "2025-09-15T19:34:42.062Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 140,
+  "fields": {
+    "name": "Cable",
+    "category": 4,
+    "location": "Mi casa",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-15T20:28:23.810Z",
+    "updated_at": "2025-09-15T20:28:54.787Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 141,
+  "fields": {
+    "name": "Telefono",
+    "category": 5,
+    "location": "Mi casa",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-18T15:33:52.582Z",
+    "updated_at": "2025-09-18T15:33:52.582Z"
+  }
+},
+{
+  "model": "assets.asset",
+  "pk": 142,
+  "fields": {
+    "name": "Xbox",
+    "category": 1,
+    "location": "Audacia",
+    "status": "En mantenimiento",
+    "created_at": "2025-09-19T20:24:19.258Z",
+    "updated_at": "2025-09-19T20:24:19.258Z"
+  }
+},
+{
+  "model": "loans.loan",
+  "pk": 2,
+  "fields": {
+    "asset": 4,
+    "user": 2,
+    "loan_date": "2025-09-12T00:00:00Z",
+    "return_date": "2025-09-18T00:00:00Z",
+    "status": "Activo"
+  }
+},
+{
+  "model": "loans.loan",
+  "pk": 3,
+  "fields": {
+    "asset": 3,
+    "user": 3,
+    "loan_date": "2025-09-12T00:00:00Z",
+    "return_date": "2025-09-30T00:00:00Z",
+    "status": "Activo"
+  }
+},
+{
+  "model": "loans.loan",
+  "pk": 4,
+  "fields": {
+    "asset": 140,
+    "user": 2,
+    "loan_date": "2025-09-18T15:39:03.481Z",
+    "return_date": "2025-09-18T00:00:00Z",
+    "status": "Activo"
+  }
+},
+{
+  "model": "loans.loan",
+  "pk": 5,
+  "fields": {
+    "asset": 112,
+    "user": 3,
+    "loan_date": "2025-09-19T20:08:41.830Z",
+    "return_date": "2024-09-15T00:00:00Z",
+    "status": "Devuelto"
+  }
+},
+{
+  "model": "loans.loan",
+  "pk": 6,
+  "fields": {
+    "asset": 141,
+    "user": 1,
+    "loan_date": "2025-09-19T20:09:18.304Z",
+    "return_date": "2025-09-25T00:00:00Z",
+    "status": "Activo"
+  }
+},
+{
+  "model": "loans.loan",
+  "pk": 7,
+  "fields": {
+    "asset": 107,
+    "user": 2,
+    "loan_date": "2025-09-22T19:52:31.337Z",
+    "return_date": "4567-03-12T00:00:00Z",
+    "status": "Activo"
+  }
+},
+{
+  "model": "maintenance.maintenance",
+  "pk": 1,
+  "fields": {
+    "asset": 1,
+    "description": "Mantenimiento Programado",
+    "performed_by": "Eric",
+    "status": "En proceso",
+    "created_at": "2025-09-24T15:17:17.791Z"
+  }
+},
+{
+  "model": "maintenance.maintenance",
+  "pk": 2,
+  "fields": {
+    "asset": 2,
+    "description": "Mantenimiento a realizar",
+    "performed_by": "Eric",
+    "status": "Pendiente",
+    "created_at": "2025-09-24T15:17:17.791Z"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "assets",
+    "model": "asset"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "assets",
+    "model": "assetcategory"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "loans",
+    "model": "loan"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "maintenance",
+    "model": "maintenance"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "assets",
+    "model": "loan"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "assets",
+    "model": "categorykeyword"
+  }
+}
+]

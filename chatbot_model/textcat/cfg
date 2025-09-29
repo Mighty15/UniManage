@@ -1,0 +1,15 @@
+{
+  "labels":[
+    "saludo",
+    "despedida",
+    "listar_activos_disponibles",
+    "contar_activos_por_estado",
+    "get_most_recent_loan",
+    "reportar_problema",
+    "afirmacion",
+    "negacion",
+    "listar_capacidades"
+  ],
+  "threshold":0.0,
+  "positive_label":null
+}

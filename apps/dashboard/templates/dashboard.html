@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel de Reportes - Sistema de Activos{% endblock %}
+
+{% block extra_head %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-primary to-secondary text-white py-8 rounded-b-2xl shadow-lg mb-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-2">Panel de Reportes de Activos</h1>
+            <p class="text-xl opacity-90">Resumen completo del estado de los activos y categorías</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 mb-16">
+
+        <!-- General Metrics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+            <div class="bg-white rounded-xl shadow-md p-5 text-center">
+                <h3 class="text-lg font-bold text-gray-700">Total Activos</h3>
+                <p class="text-4xl font-bold text-dark">{{ total_assets }}</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-5 text-center">
+                <h3 class="text-lg font-bold text-gray-700">Disponibles</h3>
+                <p class="text-4xl font-bold text-primary">{{ available_assets }}</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-5 text-center">
+                <h3 class="text-lg font-bold text-gray-700">En Uso</h3>
+                <p class="text-4xl font-bold text-status_blue">{{ in_use_assets }}</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-5 text-center">
+                <h3 class="text-lg font-bold text-gray-700">En Mantenimiento</h3>
+                <p class="text-4xl font-bold text-status_yellow">{{ maintenance_assets }}</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-5 text-center">
+                <h3 class="text-lg font-bold text-gray-700">Categorías</h3>
+                <p class="text-4xl font-bold text-dark">{{ total_categories }}</p>
+            </div>
+        </div>
+
+        <!-- Botón hacia el CRUD de Activos -->
+        <div class="text-center mb-8">
+            <a href="{% url 'asset_list' %}"
+               class="bg-primary hover:bg-dark text-white px-6 py-3 rounded-lg shadow-lg font-semibold">
+               Gestionar Activos
+            </a>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="flex justify-center mb-8"> {# Changed to flex justify-center to center the single chart #}
+            <div class="bg-white rounded-xl shadow-md p-5 w-full max-w-md"> {# Added w-full max-w-md to reduce size #}
+                <h2 class="text-xl font-semibold text-dark mb-4">Distribución de Activos por Estado</h2>
+                <canvas id="assetStatusChart"></canvas>
+            </div>
+            {# Removed the Assets by Category Bar Chart div #}
+        </div>
+
+        <!-- Distribución por Categorías -->
+        <div class="mb-8">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-dark text-white px-5 py-3 font-semibold text-lg">
+                    <i class="fas fa-layer-group mr-2"></i> Distribución por Categorías de Activos
+                </div>
+                <div class="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {% for item in data_by_category %}
+                    <div class="bg-gray-100 rounded-lg p-4 shadow">
+                        <h3 class="text-lg font-bold mb-2">{{ item.categoria }}</h3>
+                        <p class="text-sm text-gray-700">Total: {{ item.total }}</p>
+                        <div class="w-full bg-gray-300 rounded-full h-4 mt-3 flex">
+                            <div class="bg-primary h-4 rounded-l-full" style="width: {{ item.disponibles_pct }}%"></div>
+                            <div class="bg-status_blue h-4" style="width: {{ item.en_uso_pct }}%"></div>
+                            <div class="bg-status_yellow h-4 rounded-r-full" style="width: {{ item.remaining_pct_for_bar }}%"></div>
+                        </div>
+                        <div class="mt-3 text-sm">
+                            <span class="text-primary font-semibold">{{ item.disponibles }} disponibles</span> |
+                            <span class="text-status_blue font-semibold">{{ item.en_uso }} en uso</span> |
+                            <span class="text-status_yellow font-semibold">{{ item.mantenimiento }} en mant.</span>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="col-span-4 text-center text-gray-500">No hay categorías registradas.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Last 10 Loans and Maintenances -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+            <!-- Last 10 Loans -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-dark text-white px-5 py-3 font-semibold text-lg">
+                    <i class="fas fa-handshake mr-2"></i> Últimos 10 Préstamos
+                </div>
+                <div class="p-5">
+                    {% if last_10_loans %}
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activo</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuario</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Préstamo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            {% for loan in last_10_loans %}
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ loan.asset.name }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ loan.user.username }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ loan.loan_date|date:"d/m/Y" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="text-center text-gray-500">No hay préstamos recientes.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Last 10 Maintenances -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-dark text-white px-5 py-3 font-semibold text-lg">
+                    <i class="fas fa-tools mr-2"></i> Últimos 10 Mantenimientos
+                </div>
+                <div class="p-5">
+                    {% if last_10_maintenances %}
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activo</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            {% for maintenance in last_10_maintenances %}
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ maintenance.asset.name }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ maintenance.status }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ maintenance.created_at|date:"d/m/Y" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="text-center text-gray-500">No hay mantenimientos recientes.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Asset Status Chart (Pie Chart)
+    const assetStatusCtx = document.getElementById('assetStatusChart').getContext('2d');
+    new Chart(assetStatusCtx, {
+        type: 'pie',
+        data: {
+            labels: {{ asset_status_labels|safe }},
+            datasets: [{
+                data: {{ asset_status_data|safe }},
+                backgroundColor: [
+                    '#10B981', // primary (Disponible)
+                    '#3B82F6', // status_blue (En uso)
+                    '#F59E0B', // status_yellow (En mantenimiento)
+                ],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: false,
+                    text: 'Distribución de Activos por Estado'
+                }
+            }
+        }
+    });
+
+    // Removed Assets by Category Chart (Bar Chart) JavaScript code
+</script>
+{% endblock %}
